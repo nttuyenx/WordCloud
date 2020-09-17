@@ -33,11 +33,7 @@ def calculate_frequencies(file_contents):
         else:
             words_dict[word] += 1
 
-    # Generate word cloud
-    cloud = wordcloud.WordCloud()
-    cloud.generate_from_frequencies(words_dict)
-
-    return cloud.to_array()
+    return words_dict
 
 
 def main():
@@ -47,7 +43,13 @@ def main():
 
     fhand = open("./romeo_and_juliet.txt", "r")
     file_contents = fhand.read()
-    myimage = calculate_frequencies(file_contents)
+    words_dict = calculate_frequencies(file_contents)
+
+    # Generate word cloud
+    cloud = wordcloud.WordCloud()
+    cloud.generate_from_frequencies(words_dict)
+    myimage = cloud.to_array()
+
     plt.imshow(myimage, interpolation = 'nearest')
     plt.axis('off')
     plt.show()
