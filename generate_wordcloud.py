@@ -5,6 +5,12 @@ from matplotlib import pyplot as plt
 
 
 def calculate_frequencies(file_contents):
+    """
+    Process the text, remove punctuation, ignore case and words that
+    do not contain all alphabets, count the frequencies, and ignore
+    irrelevant words.
+    """
+
     # Here is a list of punctuations and irrelevent words
     punctuations = string.punctuation
     irrelevent_words = ["the", "a", "to", "if", "is", "it", "of", "and", "or", "an", "as", "i", "me", "my", \
@@ -30,10 +36,15 @@ def calculate_frequencies(file_contents):
     # Generate word cloud
     cloud = wordcloud.WordCloud()
     cloud.generate_from_frequencies(words_dict)
+
     return cloud.to_array()
 
 
 def main():
+    """
+    Generate a 'word cloud' from a input text.
+    """
+
     fhand = open("./romeo_and_juliet.txt", "r")
     file_contents = fhand.read()
     myimage = calculate_frequencies(file_contents)
