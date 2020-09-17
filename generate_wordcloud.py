@@ -41,8 +41,11 @@ def main():
     Generate a 'word cloud' from a input text.
     """
 
-    fhand = open("./romeo_and_juliet.txt", "r")
-    file_contents = fhand.read()
+    lines = []
+    with open("./romeo_and_juliet.txt", "r") as fhand:
+        for line in fhand:
+            lines.append(line)
+    file_contents = " ".join(lines)
     words_dict = calculate_frequencies(file_contents)
 
     # Generate word cloud
