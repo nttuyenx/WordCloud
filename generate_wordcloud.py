@@ -55,7 +55,9 @@ def main():
 
     plt.imshow(myimage, interpolation = 'nearest')
     plt.axis('off')
+    fig = plt.gcf()
     plt.show()
+    fig.savefig('romeo_and_juliet_wordcloud.jpeg', dpi=100, pil_kwargs={'quality':95})
 
 
 if __name__ == "__main__":
