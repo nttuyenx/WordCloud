@@ -4,7 +4,7 @@ A project that generates a 'word cloud' from some text.
 ## Project files
 The project includes three files:
 1. `generate_wordcloud.py` is the main script.
-2. `romeo_and_juliet.txt` is the input text sample.
+2. `romeo_and_juliet.txt` is the input text sample that can be downloaded [here](https://www.gutenberg.org/files/1513/1513-0.txt).
 3. `romeo_and_juliet_wordcloud.jpeg` is the output image sample.
 4. `README.md` is where you provide information about other files.
 
