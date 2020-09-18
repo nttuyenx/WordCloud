@@ -3,33 +3,24 @@ import argparse
 import wordcloud
 import string
 from matplotlib import pyplot as plt
+from nltk.corpus import stopwords
 
 
 def calculate_frequencies(file_contents):
     """
     Process the text, remove punctuation, ignore case and words that
     do not contain all alphabets, count the frequencies, and ignore
-    irrelevant words.
+    uninteresting or irrelevant words.
     """
 
-    # Here is a list of punctuations and irrelevent words
+    # Here is a list of punctuations and uninteresting or irrelevent words
     punctuations = string.punctuation
-    irrelevent_words = [
-        "the", "a", "to", "if", "is", "it", "of", "and", "or", "an", "as",
-        "i", "me", "my", "we", "our", "ours", "you", "your", "yours", "he",
-        "she", "him", "his", "her", "hers", "its", "they", "them", "their",
-        "what", "which", "who", "whom", "this", "that", "am", "are", "was",
-        "were", "be", "been", "being", "have", "has", "had", "do", "does",
-        "did", "but", "at", "by", "with", "from", "here", "when", "where",
-        "how", "all", "any", "both", "each", "few", "more", "some", "such",
-        "no", "nor", "too", "very", "can", "will", "just"]
-
     for char in punctuations:
         file_contents = file_contents.replace(char, "")
 
     file_contents = file_contents.lower().split()
-
-    words = [word for word in file_contents if word not in irrelevent_words]
+    stop_words = list(stopwords.words('english'))
+    words = [word for word in file_contents if word not in stop_words]
 
     words_dict = {}
     for word in words:
